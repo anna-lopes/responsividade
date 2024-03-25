@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>index</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script>
+    function buscarEnderecoNoReceitaWs() {
+      var componentePesquisaCnpj = document.getElementById("pesquisaCnpj");
+      var cnpj = componentePesquisaCnpj.value;
+
+      // Usando a API de proxy CORS Anywhere para contornar o problema de CORS
+      var proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+      var apiUrl = 'https://www.receitaws.com.br/v1/cnpj/' + cnpj;
+
+      fetch(proxyUrl + apiUrl)
+        .then(response => response.json())
+        .then(data => {
+          // Atualize os campos com os valores da resposta
+          document.getElementById('status').value = data.status;
+          document.getElementById('atualizacao').value = data.atualizacao;
+          document.getElementById('tipo').value = data.tipo;
+          document.getElementById('porte').value = data.porte;
+          document.getElementById('nome').value = data.nome;
+          document.getElementById('fantasia').value = data.fantasia;
+          document.getElementById('abertura').value = data.abertura;
+          document.getElementById('codigo1').value = data.codigo1;
+          document.getElementById('dercricao1').value = data.dercricao1;
+          document.getElementById('codigo2').value = data.codigo2;
+          document.getElementById('descricao2').value = data.descricao2;
+          document.getElementById('natureza_juridica').value = data.natureza_juridica;
+          document.getElementById('logradouro').value = data.logradouro;
+          document.getElementById('numero').value = data.numero;
+          document.getElementById('complemento').value = data.complemento;
+          document.getElementById('cep').value = data.cep;
+          document.getElementById('bairro').value = data.bairro;
+          document.getElementById('municipio').value = data.municipio;
+          document.getElementById('uf').value = data.uf;
+          document.getElementById('email').value = data.email;
+          document.getElementById('telefone').value = data.telefone;
+          document.getElementById('efr').value = data.efr;
+          document.getElementById('situacao').value = data.situacao;
+          document.getElementById('data_situacao').value = data.data_situacao;
+          document.getElementById('motivo_situacao').value = data.motivo_situacao;
+          document.getElementById('situacao_especial').value = data.situacao_especial;
+          document.getElementById('data_situacao_especial').value = data.data_situacao_especial;
+          document.getElementById('capital_social').value = data.capital_social;
+          document.getElementById('nome_socio').value = data.nome_socio;
+          document.getElementById('pais').value = data.pais;
+          document.getElementById('qualificacao_socio').value = data.qualificacao_socio;
+          document.getElementById('nome_representante').value = data.nome_representante;
+          document.getElementById('qualificacao_representante').value = data.qualificacao_representante;
+          document.getElementById('api_gratuita').value = data.api_gratuita;
+          document.getElementById('dados_cache').value = data.dados_cache;
+
+          // Atualize outros campos conforme necessário
+        })
+        .catch(error => {
+          console.error('Erro:', error);
+          alert("Ocorreu um erro ao buscar os dados do CNPJ.");
+        });
+    }
+  </script>
+</head>
+
+<body>
+  <form method="get" action=".">
+  <label>CNPJ:
+  <input name="pesquisaCnpj" id="pesquisaCnpj" type="number">
+  <input type="button" name="Pesquisar" onclick="buscarEnderecoNoReceitaWs()" value="Pesquisar">
+  <br />
+  <label>Status:
+    <input name="status" type="text" id="status" size="10" /></label><br />
+    <label>Ultima atualização:
+    <input name="atualizacao" type="data" id="atualizacao" size="10" /></label><br />
+    <label>Tipo:
+    <input name="tipo" type="text" id="tipo" size="40" /></label><br />
+    <label>Porte:
+    <input name="porte" type="text" id="porte" size="25" /></label><br />
+    <label>Nome:
+    <input name="nome" type="text" id="nome" size="20" /></label><br />
+    <label>fantasia:
+    <input name="fantasia" type="date" id="fantasia" size="40" /></label><br />
+    <label>abertura:
+    <input name="abertura" type="text" id="abertura" size="40" /></label><br />
+    <label>Codigo da atividade principal:
+    <input name="codigo1" type="text" id="codigo1" size="25" /></label><br />
+    <label>Descrição da atividade principal:
+    <input name="descricao1" type="text" id="descricao1" size="40" /></label><br />
+    <label>Codigo da atividade secundaria:
+    <input name="codigo2" type="text" id="codigo2" size="25" /></label><br />
+    <label>Descrição da atividade secundaria:
+    <input name="descricao2" type="text" id="descricao2" size="40" /></label><br />
+    <label>natureza juridica:
+    <input name="natureza_juridica" type="text" id="natureza=juridica" size="40" /></label><br />
+    <label>logradouro:
+    <input name="logradouro" type="text" id="logradouro" size="15" /></label><br />
+    <label>numero:
+    <input name="numero" type="number" id="numero" size="5" /></label><br />
+    <label>complemento:
+    <input name="complemento" type="text" id="complemento" size="15" /></label><br />
+    <label>cep:
+    <input name="cep" type="number" id="cep" size="10" /></label><br />       
+    <label>bairro:
+    <input name="bairro" type="text" id="bairro" size="15" /></label><br />
+    <label>municipio:
+    <input name="municipio" type="text" id="municipio" size="20" /></label><br />
+    <label>uf:
+    <input name="uf" type="text" id="uf" size="2" /></label><br />
+    <label>email:
+    <input name="email" type="email" id="email" size="10" /></label><br /> 
+    <label>telefone:
+    <input name="telefone" type="number" id="telefone" size="11" /></label><br />
+    <label>efr:
+    <input name="efr" type="text" id="efr" size="25" /></label><br />
+    <label>situacao:
+    <input name="situacao" type="text" id="situacao" size="40" /></label><br />
+    <label>data da situacao:
+    <input name="data_situacao" type="date" id="data_situacao" size="10" /></label><br />
+    <label>motivo de situacao:
+    <input name="motivo_situacao" type="text" id="motivo_situacao" size="40" /></label><br />
+    <label>situacao especial:
+    <input name="situacao_especial" type="text" id="situacao_especial" size="40" /></label><br />
+    <label>data da situacao especial:
+    <input name="data_situacao_especial" type="text" id="data_situacao_especial" size="10" /></label><br />
+    <label>capital social:
+    <input name="capital_social" type="text" id="capital_social" size="40" /></label><br />
+    <label>nome do socio:
+    <input name="nome_socio" type="text" id="nome_socio" size="50" /></label><br />
+    <label>pais de origem do socio:
+    <input name="pais" type="text" id="pais" size="15" /></label><br />
+    <label>Qualificação do socio:
+    <input name="qualificacao_socio" type="text" id="qualificacao_socio" size="40" /></label><br />
+    <label>nome do representante legal:
+    <input name="nome_representante" type="text" id="nome_representante" size="40" /></label><br />
+    <label> Qualificação do Representante legal:
+    <input name="qualificacao_representante" type="text" id="qualificacao_representante" size="40" /></label><br />
+    <label> Info uso dos limites - Se a consulta utilizou a API gratuita:
+    <input name="api_gratuita" type="text" id="api_gratuita" size="10" /></label><br />
+    <label> Info uso dos limites - Se a consulta foi removida com dados do cache:
+    <input name="dados_cache" type="text" id="dados_cache" size="10" /></label><br />
+
+  </form>
+</body>
+
+</html>
